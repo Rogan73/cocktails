@@ -1,16 +1,16 @@
 <script setup>
 import { computed, ref } from "vue";
 import AppLayout from "../components/AppLayout.vue";
-import { useRoute,useRouter } from "vue-router";
+import { useRoute } from "vue-router";
 import { COCKTAIL_BY_ID } from "../constants/api";
 import axios from "axios";
 
 const route = useRoute();
-const router = useRouter();
 
-const goBack = ()=> {
-  router.back()//  = go(-1)
-}
+
+// const goBack = ()=> {
+//   router.back()//  = go(-1)
+// }
 
 const cocktail = ref(null);
 const cocktailId = computed(() => route.path.split("/").pop());
@@ -42,7 +42,7 @@ getCocktail();
 
 <template>
   <div v-if="cocktail" class="wrap">
-    <AppLayout :imgUrl="cocktail.strDrinkThumb" :backFunc="goBack">
+    <AppLayout :imgUrl="cocktail.strDrinkThumb" >
       <div class="wrapper">
         <div class="info">
           <div class="title">{{ cocktail.strDrink}}</div>
